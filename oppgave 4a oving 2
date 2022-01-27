@@ -12,10 +12,10 @@ void setup()
 void loop()
 {
   
-  unsigned long currentTime = millis(); // henter tiden siden start
+  currentTime = millis(); // henter tiden siden start
   
   // om tiden siden start minus intervallet på 1000ms er større en tiden siden sist if-statementen kjørte så skal den kjøre igjen
-  if ((unsigned long)currentTime - intervall >= lastTime){ 
+  if (currentTime - lastTime >= intervall){ 
     number = random(1,7); // finner tilfeldige nummer fra 1 til 6
     Serial.println(number); // skriver det tilfeldige nummeret til seriemonitoren
     unsigned long lastTime = currentTime; // endrer tiden fra forrige gang if ble kjørt til tiden den ble kjørt nå.
