@@ -1,0 +1,23 @@
+unsigned long currentTime; // lager variabel for oppdatert tid
+unsigned long lastTime; // lager variabel for tiden sist "if" kjørte
+int number; 
+int intervall = 1000; // variabel for intervallet (millisekund)
+
+void setup()
+{
+  Serial.begin(9600); 
+  randomSeed(analogRead(0));
+}
+
+void loop()
+{
+  
+  unsigned long currentTime = millis(); // henter tiden siden start
+  
+  // om tiden siden start minus intervallet på 1000ms er større en tiden siden sist if-statementen kjørte så skal den kjøre igjen
+  if ((unsigned long)currentTime - intervall >= lastTime){ 
+    number = random(1,7); // finner tilfeldige nummer fra 1 til 6
+    Serial.println(number); // skriver det tilfeldige nummeret til seriemonitoren
+    unsigned long lastTime = currentTime; // endrer tiden fra forrige gang if ble kjørt til tiden den ble kjørt nå.
+  }
+}
